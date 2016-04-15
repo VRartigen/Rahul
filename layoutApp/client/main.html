@@ -1,0 +1,152 @@
+<head>
+  <title>simple</title>
+</head>
+
+<body>
+   <h1>Welcome to Meteor!</h1>
+</body>
+
+
+<template name="navigation">
+    <nav class = "navbar navbar-inverse navbar-fixed-top" >
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1 class = "navbar-brand">Welcome {{currentUser.profile.name}}</h1>
+            </div>
+            <div id = "navbar" class = "navbar-collapse collapse">
+                
+                <ul class = "nav navbar-nav navbar-right">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Help</a></li>
+                    {{#if currentUser}}
+                        <li><button class="btn btn-danger btn-logout" style="margin-top:10px;">Logout {{currentUser.profile.name}}</button></li>
+                       
+                    {{else}}
+                        <style>
+                            body{
+                                background-image: "artigenback.jpg";
+                            }
+                        </style>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="register">Register</a></li>
+                    {{/if}}
+                    
+                </ul>
+                <form class = "navbar-form navbar-right">
+                    <input type = "text" class = "form-control" placeholder="Search....">
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+
+</template>
+
+<template name="register">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <form class="register-form">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Registration</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group col-lg-12">
+                            <label>Email</label>
+                            <input type="email"  class="form-control" id="email" value="">
+                        </div>
+ 
+                        <div class="form-group col-lg-6">
+                            <label>Name</label>
+                            <input type="text" name="" class="form-control" id="firstname" value="">
+                        </div>
+ 
+                        <div class="form-group col-lg-6">
+                            <label>Last Name</label>
+                            <input type="text" name="" class="form-control" id="lastname" value="">
+                        </div>
+ 
+                        <div class="form-group col-lg-12">
+                            <label>Password</label>
+                            <input type="password" name="" class="form-control" id="password" value="">
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+ 
+<template name="login">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form class="login-form" style="margin-top:100px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group col-lg-10">
+                            <label>Email</label>
+                            <input type="email"  class="form-control" id="email" value="">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Password</label>
+                            <input type="password" name="" class="form-control" id="password" value="">
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary">Login</button>                       
+                        <button  class="btn btn-primary btn-facebook">Facebook Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+ 
+<template name="home">
+    <div class="home">
+        {{> navigation}}
+        {{#if currentUser}}
+            {{> mainContent}}
+        {{else}}
+            <img src="artigenback.jpg" width="2000px" height="1200px">
+        {{/if}}
+    </div>
+</template>
+
+
+<template name = "mainContent">
+    <div class="container-fluid">
+        <div class = "row">
+            <div class = "col-sm-3 col-md-2 sidebar">
+                 <img src="logo.jpg" height="200px" width="200px"/>
+                <ul class = "nav nav-sidebar">
+                   
+                    <br /><li><a href="#">Overview</a></li>
+                     <br /><li><a href="#">Accounts</a></li>
+                     <br /><li><a href="#">Users</a></li>
+                     <br /><li><a href="#">Reports</a></li>
+                     <br /><li><a href="#">Analytics</a></li>
+                     <br /><li><a href="#">Export</a></li>
+                     <br /><li><a href="#">Payment</a></li>
+                </ul>
+            </div>
+            <div class = "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header" >Dashboard</h1>
+                <div class="row placeholder">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
